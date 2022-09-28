@@ -44,7 +44,6 @@ button {
   flex-direction: column;
   margin: 10px;
   border: 1px solid #eee;
-  box-shadow: 0 0 5px 5px #eee;
 }
 
 .header,
@@ -79,12 +78,16 @@ li {
   gap: 10px;
 }
 
-.list-item > span {
+.task-input {
   flex: 1;
+  border: none;
+  background-color: inherit;
 }
 
 .list-item > i {
   cursor: move;
+  width: 40px;
+  text-align: center;
 }
 
 .clear-btn {

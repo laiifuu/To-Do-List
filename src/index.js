@@ -1,33 +1,32 @@
 import './style.css';
+import Tasks from './functionalities.js';
 
-const tasksList = document.querySelector('.tasks-list');
-const tasks = [
-  {
-    description: 'Buy groceries',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'Finish homework',
-    completed: false,
-    index: 2,
-  },
-  {
-    description: 'Make cat food',
-    completed: false,
-    index: 3,
-  },
-];
+const tasksList = new Tasks();
 
-function populateTasksSection(tasks) {
-  tasks.forEach((task) => {
-    const item = document.createElement('li');
-    item.classList.add('list-item');
-    item.innerHTML = `<button><i class="fa-regular fa-square"></i></button>
-        <span>${task.description}</span>
-        <i class="fa-solid fa-ellipsis-vertical"></i>`;
-    tasksList.append(item);
-  });
-}
+const newTaskInput = document.querySelector('.enter-task');
+const tasksUL = document.querySelector('.tasks-list');
 
-populateTasksSection(tasks);
+window.addEventListener('load', () => {
+  if (localStorage.getItem('tasks')) {
+    tasksList.tasksList = JSON.parse(localStorage.getItem('tasks'));
+    if (tasksList.tasksList.length !== 0) {
+      tasksList.tasksList.forEach((item) => {
+        const oldTask = tasksList.createTaskElement(item);
+        tasksUL.append(oldTask);
+      });
+    }
+  }
+});
+
+newTaskInput.addEventListener('keypress', (e) => {
+  if (!e) e = window.event;
+  const keyCode = e.code || e.key;
+  if (keyCode === 'Enter') {
+    e.preventDefault();
+    tasksList.addTask(newTaskInput.value);
+    newTaskInput.value = '';
+    const newTask = tasksList
+      .createTaskElement(tasksList.tasksList[tasksList.tasksList.length - 1]);
+    tasksUL.append(newTask);
+  }
+});
