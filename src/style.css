@@ -80,14 +80,14 @@ li {
 
 .task-input {
   flex: 1;
-  border: none; 
+  border: none;
   background-color: inherit;
 }
 
 .list-item > i {
   cursor: move;
- width: 40px;
- text-align: center;
+  width: 40px;
+  text-align: center;
 }
 
 .clear-btn {

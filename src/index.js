@@ -1,9 +1,9 @@
 import './style.css';
 import Tasks from './functionalities.js';
 
-let tasksList = new Tasks(); 
+const tasksList = new Tasks();
 
-const newTaskInput = document.querySelector('.enter-task'); 
+const newTaskInput = document.querySelector('.enter-task');
 const tasksUL = document.querySelector('.tasks-list');
 
 window.addEventListener('load', () => {
@@ -19,15 +19,14 @@ window.addEventListener('load', () => {
 });
 
 newTaskInput.addEventListener('keypress', (e) => {
-  
   if (!e) e = window.event;
-    let keyCode = e.code || e.key;
-    if (keyCode == 'Enter'){
-      e.preventDefault();
-      tasksList.addTask(newTaskInput.value);
-      newTaskInput.value = ""; 
-      const newTask = tasksList.createTaskElement(tasksList.tasksList[tasksList.tasksList.length - 1]); 
-      tasksUL.append(newTask);
-      console.log(tasksList);
-    }
+  const keyCode = e.code || e.key;
+  if (keyCode === 'Enter') {
+    e.preventDefault();
+    tasksList.addTask(newTaskInput.value);
+    newTaskInput.value = '';
+    const newTask = tasksList
+      .createTaskElement(tasksList.tasksList[tasksList.tasksList.length - 1]);
+    tasksUL.append(newTask);
+  }
 });
