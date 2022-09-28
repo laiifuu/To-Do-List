@@ -1,0 +1,102 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ul[role='list'] {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.to-do-list {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  border: 1px solid #eee;
+  box-shadow: 0 0 5px 5px #eee;
+}
+
+.header,
+.add-task-section,
+li,
+.clear-btn {
+  padding: 10px;
+}
+
+.header,
+.add-task-section,
+li {
+  border-bottom: 1px solid #eee;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.enter-task {
+  width: 100%;
+  border: none;
+  font-style: italic;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.list-item > span {
+  flex: 1;
+}
+
+.list-item > i {
+  cursor: move;
+}
+
+.clear-btn {
+  background-color: #eee;
+}
+
+.clear-btn > button {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .to-do-list {
+    width: 50%;
+  }
+}
