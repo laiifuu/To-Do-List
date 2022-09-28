@@ -1,23 +1,7 @@
 import './style.css';
 
 const tasksList = document.querySelector('.tasks-list');
-const tasks = [
-  {
-    description: 'Buy groceries',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'Finish homework',
-    completed: false,
-    index: 2,
-  },
-  {
-    description: 'Make cat food',
-    completed: false,
-    index: 3,
-  },
-];
+const tasks = [];
 
 function populateTasksSection(tasks) {
   tasks.forEach((task) => {
