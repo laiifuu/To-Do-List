@@ -90,7 +90,7 @@ li {
   flex: 1;
 }
 
-.checkbox-ticked{
+.checkbox-ticked {
   color: rgb(88, 236, 138);
 }
 
@@ -104,6 +104,9 @@ li {
   background-color: #eee;
 }
 
+.clear-btn > button {
+  width: 100%;
+}
 
 .clear-btn > button:disabled {
   text-decoration: none;
@@ -113,13 +116,6 @@ li {
   text-decoration: underline;
   color: grey;
 }
-
-.clear-btn > button {
-  width: 100%;
-}
-
-
-
 
 @media screen and (min-width: 768px) {
   .to-do-list {

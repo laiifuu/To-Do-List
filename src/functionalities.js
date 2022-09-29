@@ -1,4 +1,4 @@
-import {updateStatus} from './status.js'
+import updateStatus from './status.js';
 
 export default class Tasks {
   constructor() {
@@ -18,68 +18,66 @@ export default class Tasks {
     const item = document.createElement('li');
     item.classList.add('list-item');
     item.setAttribute('data-index', taskObj.index);
-    if(taskObj.completed == false){
+    if (taskObj.completed === false) {
       item.innerHTML = `<button><i class="fa-regular fa-square checkbox"></i></button>
         <input type="text" value="${taskObj.description}" class="task-input">
         <i class="fa-solid fa-ellipsis-vertical trash-can"></i>`;
 
-        const taskInput = item.querySelector('.task-input');
-        taskInput.addEventListener('focus', () => {
-          item.style.backgroundColor = 'rgb(205, 187, 205)';
-          trashCan.classList.remove('fa-solid');
-          trashCan.classList.remove('fa-ellipsis-vertical');
-          trashCan.classList.add('fa-regular');
-          trashCan.classList.add('fa-trash-can');
-          trashCan.style.cursor = 'pointer';
-          trashCan.addEventListener('click', () => {
-            const index = parseInt(trashCan.parentElement.getAttribute('data-index'), 10);
-            this.removeTask(index);
-            trashCan.parentElement.remove();
-          });
-        });
-    
-        taskInput.addEventListener('focusout', () => {
-          item.style.backgroundColor = 'white';
-          trashCan.classList.add('fa-solid');
-          trashCan.classList.add('fa-ellipsis-vertical');
-          trashCan.classList.remove('fa-regular');
-          trashCan.classList.remove('fa-trash-can');
-          trashCan.style.cursor = 'move';
-        });
-    
-        taskInput.addEventListener('keypress', (e) => {
-          if (!e) e = window.event;
-          const keyCode = e.code || e.key;
-          if (keyCode === 'Enter') {
-            e.preventDefault();
-            const index = taskInput.parentElement.getAttribute('data-index');
-            this.tasksList[index].description = taskInput.value;
-            localStorage.setItem('tasks', JSON.stringify(this.tasksList));
-          }
-        });
-    
-        taskInput.addEventListener('keyup', (e) => {
-          if (e.keyCode === 13) {
-            e.preventDefault();
-            e.target.blur();
-          }
-        });
+      const taskInput = item.querySelector('.task-input');
+      const trashCan = item.querySelector('.trash-can');
 
-    }
-    else{
+      taskInput.addEventListener('focus', () => {
+        item.style.backgroundColor = 'rgb(205, 187, 205)';
+        trashCan.classList.remove('fa-solid');
+        trashCan.classList.remove('fa-ellipsis-vertical');
+        trashCan.classList.add('fa-regular');
+        trashCan.classList.add('fa-trash-can');
+        trashCan.style.cursor = 'pointer';
+        trashCan.addEventListener('click', () => {
+          const index = parseInt(trashCan.parentElement.getAttribute('data-index'), 10);
+          this.removeTask(index);
+          trashCan.parentElement.remove();
+        });
+      });
+
+      taskInput.addEventListener('focusout', () => {
+        item.style.backgroundColor = 'white';
+        trashCan.classList.add('fa-solid');
+        trashCan.classList.add('fa-ellipsis-vertical');
+        trashCan.classList.remove('fa-regular');
+        trashCan.classList.remove('fa-trash-can');
+        trashCan.style.cursor = 'move';
+      });
+
+      taskInput.addEventListener('keypress', (e) => {
+        if (!e) e = window.event;
+        const keyCode = e.code || e.key;
+        if (keyCode === 'Enter') {
+          e.preventDefault();
+          const index = taskInput.parentElement.getAttribute('data-index');
+          this.tasksList[index].description = taskInput.value;
+          localStorage.setItem('tasks', JSON.stringify(this.tasksList));
+        }
+      });
+
+      taskInput.addEventListener('keyup', (e) => {
+        if (e.keyCode === 13) {
+          e.preventDefault();
+          e.target.blur();
+        }
+      });
+    } else {
       item.innerHTML = `<button><i class="fa-regular fa-square-check checkbox checkbox-ticked"></i></button>
         <span class="task-span">${taskObj.description}</span>
         <i class="fa-solid fa-ellipsis-vertical trash-can"></i>`;
     }
 
-    const trashCan = item.querySelector('.trash-can');
-    const checkbox = item.querySelector('.checkbox'); 
-
-    let index = parseInt(item.getAttribute('data-index'));
+    const checkbox = item.querySelector('.checkbox');
+    const index = parseInt(item.getAttribute('data-index'), 10);
     checkbox.addEventListener('click', () => {
       updateStatus(index, this.tasksList);
       this.updateDisplay();
-    }); 
+    });
 
     return item;
   }
@@ -109,17 +107,14 @@ export default class Tasks {
   }
 
   updateClearButton() {
-    const clearBtn = document.querySelector('.clear-btn>button'); 
-    let items_completed = false; 
+    const clearBtn = document.querySelector('.clear-btn>button');
+    let itemsCompleted = false;
     this.tasksList.forEach((item) => {
-      if (item.completed == true){
-        items_completed = true;
+      if (item.completed === true) {
+        itemsCompleted = true;
       }
     });
 
-    clearBtn.disabled = !items_completed;
-    console.log(clearBtn);
-      
+    clearBtn.disabled = !itemsCompleted;
   }
-  
 }
