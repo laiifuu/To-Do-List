@@ -72,11 +72,8 @@ export default class Tasks {
         <i class="fa-solid fa-ellipsis-vertical trash-can"></i>`;
     }
 
-    const taskInput = item.querySelector('.task-input');
     const trashCan = item.querySelector('.trash-can');
     const checkbox = item.querySelector('.checkbox'); 
-
-    
 
     let index = parseInt(item.getAttribute('data-index'));
     checkbox.addEventListener('click', () => {
@@ -108,5 +105,21 @@ export default class Tasks {
     for (let i = 0; i < this.tasksList.length; i += 1) {
       tasks.append(this.createTaskElement(this.tasksList[i]));
     }
+    this.updateClearButton();
   }
+
+  updateClearButton() {
+    const clearBtn = document.querySelector('.clear-btn>button'); 
+    let items_completed = false; 
+    this.tasksList.forEach((item) => {
+      if (item.completed == true){
+        items_completed = true;
+      }
+    });
+
+    clearBtn.disabled = !items_completed;
+    console.log(clearBtn);
+      
+  }
+  
 }
