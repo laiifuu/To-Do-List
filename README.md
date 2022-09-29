@@ -11,6 +11,10 @@
 - JavaScript
 - Webpack
 
+## Live Demo 
+
+You can check out the app [here](https://laiifuu.github.io/To-Do-List/dist/).
+
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
