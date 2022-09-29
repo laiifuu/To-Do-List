@@ -104,9 +104,22 @@ li {
   background-color: #eee;
 }
 
+
+.clear-btn > button:disabled {
+  text-decoration: none;
+}
+
+.clear-btn > button:enabled {
+  text-decoration: underline;
+  color: grey;
+}
+
 .clear-btn > button {
   width: 100%;
 }
+
+
+
 
 @media screen and (min-width: 768px) {
   .to-do-list {
