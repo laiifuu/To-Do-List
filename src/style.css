@@ -84,6 +84,16 @@ li {
   background-color: inherit;
 }
 
+.task-span {
+  text-decoration: line-through;
+  opacity: 0.5;
+  flex: 1;
+}
+
+.checkbox-ticked{
+  color: rgb(88, 236, 138);
+}
+
 .list-item > i {
   cursor: move;
   width: 40px;
