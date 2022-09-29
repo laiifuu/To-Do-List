@@ -84,6 +84,16 @@ li {
   background-color: inherit;
 }
 
+.task-span {
+  text-decoration: line-through;
+  opacity: 0.5;
+  flex: 1;
+}
+
+.checkbox-ticked {
+  color: rgb(88, 236, 138);
+}
+
 .list-item > i {
   cursor: move;
   width: 40px;
@@ -96,6 +106,15 @@ li {
 
 .clear-btn > button {
   width: 100%;
+}
+
+.clear-btn > button:disabled {
+  text-decoration: none;
+}
+
+.clear-btn > button:enabled {
+  text-decoration: underline;
+  color: grey;
 }
 
 @media screen and (min-width: 768px) {
