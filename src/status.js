@@ -5,8 +5,6 @@ export function updateStatus(index, tasksList){
         tasksList[index].completed = true;
     }
     
-    console.log(tasksList[index]);
     localStorage.setItem('tasks', JSON.stringify(tasksList));
-    
     tasksList = JSON.parse(localStorage.getItem('tasks'));
 }
