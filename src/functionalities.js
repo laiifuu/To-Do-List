@@ -1,4 +1,4 @@
-import updateStatus from './status.js';
+import { updateStatus } from './status.js';
 
 export default class Tasks {
   constructor() {
