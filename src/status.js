@@ -1,4 +1,4 @@
-export default function updateStatus(index, tasksList) {
+export function updateStatus(index, tasksList) {
   if (tasksList[index].completed === true) {
     tasksList[index].completed = false;
   } else {
