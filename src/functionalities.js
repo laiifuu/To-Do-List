@@ -1,4 +1,4 @@
-import updateStatus from './status.js';
+import {updateStatus} from './status.js';
 
 export default class Tasks {
   constructor() {
@@ -75,6 +75,7 @@ export default class Tasks {
     const checkbox = item.querySelector('.checkbox');
     const index = parseInt(item.getAttribute('data-index'), 10);
     checkbox.addEventListener('click', () => {
+      console.log("im being clicked");
       updateStatus(index, this.tasksList);
       this.updateDisplay();
     });
