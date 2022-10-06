@@ -17,3 +17,26 @@ describe("Testing addTask method", () => {
     expect(localStorage.getItem("tasks")).toBeTruthy();
     });
 });
+
+describe('Testing removeTask method', () => {
+    test('Expect tasksList to have 1 item', () => {
+        document.body.innerHTML =
+        `<div class="tasks-section">
+            <ul role="list" class="tasks-list">
+            </ul>
+        </div>
+        <div class="clear-btn">
+            <button disabled>Clear All Completed</button>
+        </div>`;
+        const tasks = new Tasks();
+        tasks.addTask("Task 0");
+        tasks.addTask("Task 1");
+        tasks.addTask("Task 2");
+        tasks.removeTask(0);
+        tasks.removeTask(1);
+        console.log(localStorage.getItem('tasks'));
+        expect(tasks.tasksList[0].description).toBe('Task 1');
+    });
+});
+
+
