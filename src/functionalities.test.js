@@ -36,3 +36,16 @@ describe('Testing removeTask method', () => {
     expect(tasks.tasksList[0].description).toBe('Task 1');
   });
 });
+
+describe('Testing editTask method', () => {
+    test('Expect task 1 to change to I am the updated task', () => {
+        const tasks = new Tasks();
+        tasks.addTask("Task 0");
+        tasks.addTask("Task 1");
+        tasks.addTask("Task 2");
+        tasks.addTask("Task 3");
+        tasks.editTask("I am the updated task", 1);
+        expect(tasks.tasksList[1].description).toBe('I am the updated task');
+    });
+});
+
