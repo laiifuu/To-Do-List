@@ -1,5 +1,6 @@
 import './style.css';
 import Tasks from './functionalities.js';
+import { clearCompletedTasks } from './status.js';
 
 const tasksList = new Tasks();
 
@@ -30,10 +31,5 @@ newTaskInput.addEventListener('keypress', (e) => {
 });
 
 clearBtn.addEventListener('click', () => {
-  tasksList.tasksList = tasksList.tasksList.filter((item) => item.completed === false);
-  for (let i = 0; i < tasksList.tasksList.length; i += 1) {
-    tasksList.tasksList[i].index = i;
-  }
-  localStorage.setItem('tasks', JSON.stringify(tasksList.tasksList));
-  tasksList.updateDisplay();
+  clearCompletedTasks(tasksList);
 });
