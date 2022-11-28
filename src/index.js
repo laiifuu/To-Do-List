@@ -22,11 +22,13 @@ newTaskInput.addEventListener('keypress', (e) => {
   const keyCode = e.code || e.key;
   if (keyCode === 'Enter') {
     e.preventDefault();
-    tasksList.addTask(newTaskInput.value);
-    newTaskInput.value = '';
-    const newTask = tasksList
-      .createTaskElement(tasksList.tasksList[tasksList.tasksList.length - 1]);
-    tasksUL.append(newTask);
+    if(newTaskInput.value !== ''){
+      tasksList.addTask(newTaskInput.value);
+      newTaskInput.value = '';
+      const newTask = tasksList
+        .createTaskElement(tasksList.tasksList[tasksList.tasksList.length - 1]);
+      tasksUL.append(newTask);
+    }
   }
 });
 
