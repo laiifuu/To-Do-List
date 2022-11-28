@@ -36,7 +36,6 @@ export default class Tasks {
         trashCan.addEventListener('click', () => {
           const index = parseInt(trashCan.parentElement.getAttribute('data-index'), 10);
           this.removeTask(index);
-          trashCan.parentElement.remove();
         });
       });
 
@@ -55,8 +54,12 @@ export default class Tasks {
         if (keyCode === 'Enter') {
           e.preventDefault();
           const index = taskInput.parentElement.getAttribute('data-index');
-          this.tasksList[index].description = taskInput.value;
-          localStorage.setItem('tasks', JSON.stringify(this.tasksList));
+          if(taskInput.value !== ''){
+            console.log('enter has been clicked');
+            this.editTask(taskInput.value, index)
+          } else {
+            this.removeTask(index);
+          }
         }
       });
 
