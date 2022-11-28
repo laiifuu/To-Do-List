@@ -103,9 +103,9 @@ export default class Tasks {
   updateDisplay() {
     const tasks = document.querySelector('ul');
     tasks.innerHTML = '';
-    for (let i = 0; i < this.tasksList.length; i += 1) {
-      tasks.append(this.createTaskElement(this.tasksList[i]));
-    }
+    this.tasksList.forEach((item, id) => {
+      tasks.append(this.createTaskElement(item));
+    });
     this.updateClearButton();
   }
 
